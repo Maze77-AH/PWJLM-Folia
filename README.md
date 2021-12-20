@@ -1,2 +1,2 @@
 # PWJLM
-Customizable plugin to display join and leave messages while changing words.
+Customizable plugin to display join and leave messages while changing worlds.
