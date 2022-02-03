@@ -1,8 +1,19 @@
-name: PWJLM
+name: 'PWJLM'
 version: '${project.version}'
-main: io.github.maximmaxims.pwjlm.PWJLM
+main: 'io.github.maximmaxims.pwjlm.PWJLM'
 api-version: 1.18
-softdepend: [ PlaceholderAPI ]
-authors: [ MaximMaximS ]
-description: Customizable plugin to display joi nand leave messages while changing words.
-website: https://github.com/MaximMaximS/PWJLM#readme
+softdepend: [ PlaceholderAPI, AuthMe ]
+author: MaximMaximS
+description: '${project.description}'
+website: '${project.url}'
+commands:
+  pwjlm:
+    description: Main command
+    usage: /<command> [reload|help]
+permissions:
+  pwjlm.command:
+    description: Default command usage permission
+    default: op
+  pwjlm.command.reload:
+    description: Allows config reload
+    default: op

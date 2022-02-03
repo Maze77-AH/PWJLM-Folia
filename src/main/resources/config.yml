@@ -1,0 +1,76 @@
+# Whether to parse placeholders (%something%) in messages (requires PlaceholderAPI)
+parsePlaceholders: false
+# Whether to not send messages when vanished player joins/leaves
+ignoreVanished: true
+
+# Default options
+default:
+  # Join (+) messages
+  join:
+    # Default join message used when field is empty
+    message: '&7[&a+&7] &f{PLAYER}'
+    # When a player joins the server
+    server:
+      # Whether message should be sent when a player joins the server
+      use: true
+      # Custom server join message (empty for default)
+      message: ''
+    # When a player logs in using AuthMe (use this INSTEAD OF join.server, requires AuthMe)
+    authme:
+      # Whether message should be sent when a player logs in using AuthMe
+      use: false
+      # Custom server login message (empty for default)
+      message: ''
+    # When a player joins different group of worlds
+    group:
+      # Whether message should be sent when a player joins world from different group
+      use: true
+      # Custom world join message (empty for default)
+      message: ''
+      # Whether not to send messages when the player is not authenticated (requires AuthMe)
+      no-unauthed: false
+  # Leave (-) messages
+  leave:
+    # Default leave message used when field is empty
+    message: '&7[&c-&7] &f{PLAYER}'
+    # When a player leaves the server
+    server:
+      # Whether message should be sent when a player leaves the server
+      use: true
+      # Custom server leave message (empty for default)
+      message: ''
+    # When a player logs out using AuthMe (using '/logout', this doesn't include leaving the server so use this WITH leave.server, requires AuthMe)
+    authme:
+      # Whether message should be sent when a player logs out using AuthMe
+      use: false
+      # Custom server logout message (empty for default)
+      message: ''
+    # When a player leaves different group of worlds
+    group:
+      # Whether message should be sent when a player leaves world from different group
+      use: true
+      # Custom world leave message (empty for default)
+      message: ''
+      # Whether not to send messages when the player is not authenticated (requires AuthMe)
+      no-unauthed: false
+
+# Custom configuration of your groups of worlds (must be set to receive messages)
+# Then you can define the same settings as the default section (if you want them to be different)
+
+# Example:
+# survival:
+#   worlds:
+#     - world
+#     - world_nether
+#     - world_the_end
+#   settings:
+#     leave:
+#       server:
+#         use: false
+
+groups:
+  survival:
+    worlds:
+      - world
+      - world_nether
+      - world_the_end
