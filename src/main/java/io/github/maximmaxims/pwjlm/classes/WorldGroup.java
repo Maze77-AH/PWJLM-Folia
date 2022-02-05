@@ -59,38 +59,42 @@ public class WorldGroup {
     }
 
     public boolean getUseServer(boolean forJoin) {
-        return forJoin ? getUse("join.server.use") : getUse("leave.server.use");
+        return forJoin ? getBoolean("join.server.use") : getBoolean("leave.server.use");
     }
 
     public String getServerMessage(boolean forJoin) {
-        return forJoin ? getMessage("join.server.message", "join.message") : getMessage("leave.server.message", "leave.message");
+        return forJoin ? getString("join.server.message", "join.message") : getString("leave.server.message", "leave.message");
     }
 
     public boolean getUseAuthme(boolean forJoin) {
-        return forJoin ? getUse("join.authme.use") : getUse("leave.authme.use");
+        return forJoin ? getBoolean("join.authme.use") : getBoolean("leave.authme.use");
     }
 
     public String getAuthmeMessage(boolean forJoin) {
-        return forJoin ? getMessage("join.authme.message", "join.message") : getMessage("leave.authme.message", "leave.message");
+        return forJoin ? getString("join.authme.message", "join.message") : getString("leave.authme.message", "leave.message");
     }
 
     public boolean getUseGroups(boolean forJoin) {
-        return forJoin ? getUse("join.group.use") : getUse("leave.group.use");
+        return forJoin ? getBoolean("join.group.use") : getBoolean("leave.group.use");
     }
 
     public String getGroupMessage(boolean forJoin) {
-        return forJoin ? getMessage("join.group.message", "join.message") : getMessage("leave.group.message", "leave.message");
+        return forJoin ? getString("join.group.message", "join.message") : getString("leave.group.message", "leave.message");
     }
 
     public boolean getGroupIgnoreUnauthed(boolean forJoin) {
-        return forJoin ? getUse("join.group.no-unauthed") : getUse("leave.group.no-unauthed");
+        return forJoin ? getBoolean("join.group.no-unauthed") : getBoolean("leave.group.no-unauthed");
+    }
+
+    public boolean getRemoveDefault(boolean forJoin) {
+        return forJoin ? getBoolean("join.server.removeDefault") : getBoolean("leave.server.removeDefault");
     }
 
     public List<World> getWorlds() {
         return worlds;
     }
 
-    private boolean getUse(@NotNull String path) {
+    private boolean getBoolean(@NotNull String path) {
         boolean use = false;
         if (defaultSection != null) {
             use = defaultSection.getBoolean(path, false);
@@ -101,7 +105,7 @@ public class WorldGroup {
         return use;
     }
 
-    private @NotNull String getMessage(@NotNull String longPath, @NotNull String shortPath) {
+    private @NotNull String getString(@NotNull String longPath, @NotNull String shortPath) {
         String msg = "";
         if (customSection != null) {
             msg = customSection.getString(longPath, "");

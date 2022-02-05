@@ -15,6 +15,8 @@ default:
       use: true
       # Custom server join message (empty for default)
       message: ''
+      # Whether to remove the vanilla join message
+      removeDefault: true
     # When a player logs in using AuthMe (use this INSTEAD OF join.server, requires AuthMe)
     authme:
       # Whether message should be sent when a player logs in using AuthMe
@@ -39,6 +41,8 @@ default:
       use: true
       # Custom server leave message (empty for default)
       message: ''
+      # Whether to remove the vanilla leave message
+      removeDefault: true
     # When a player logs out using AuthMe (using '/logout', this doesn't include leaving the server so use this WITH leave.server, requires AuthMe)
     authme:
       # Whether message should be sent when a player logs out using AuthMe
