@@ -86,10 +86,6 @@ public class WorldGroup {
         return forJoin ? getBoolean("join.group.no-unauthed") : getBoolean("leave.group.no-unauthed");
     }
 
-    public boolean getRemoveDefault(boolean forJoin) {
-        return forJoin ? getBoolean("join.server.removeDefault") : getBoolean("leave.server.removeDefault");
-    }
-
     public List<World> getWorlds() {
         return worlds;
     }

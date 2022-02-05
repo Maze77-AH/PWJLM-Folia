@@ -20,14 +20,14 @@ public class PlayerQuitListener implements Listener {
     @EventHandler
     public void onPlayerQuitEvent(@NotNull PlayerQuitEvent event) {
         Player player = event.getPlayer();
+        if (plugin.getConfig().getBoolean("removeDefaultLeave", false)) {
+            //noinspection deprecation
+            event.setQuitMessage(null);
+        }
         boolean checkVanish = plugin.getConfig().getBoolean("ignoreVanished");
         if (checkVanish && PluginUtil.isVanished(player)) return;
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseServer(false)) {
-            if (group.getRemoveDefault(true)) {
-                //noinspection deprecation
-                event.setQuitMessage(null);
-            }
             String message = group.getServerMessage(false);
             message = message.replace("{PLAYER}", player.getName()); // Add player name
             MessageSenderUtil.sendMessage(group.getWorlds(), message, PluginUtil.usePapi(plugin));
