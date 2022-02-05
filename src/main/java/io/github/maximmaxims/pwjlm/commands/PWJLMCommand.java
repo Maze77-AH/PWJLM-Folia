@@ -36,6 +36,7 @@ public class PWJLMCommand implements CommandExecutor, TabCompleter {
                         }
                         PluginUtil.update(plugin);
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] " + "Config Reloaded Successfully!"));
+                        break;
                     case "help":
                         sendHelpMenu(sender);
                         break;
