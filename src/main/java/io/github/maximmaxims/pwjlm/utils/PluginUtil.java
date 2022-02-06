@@ -2,7 +2,6 @@ package io.github.maximmaxims.pwjlm.utils;
 
 import com.tchristofferson.configupdater.ConfigUpdater;
 import io.github.maximmaxims.pwjlm.PWJLM;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.MetadataValue;
 import org.jetbrains.annotations.NotNull;

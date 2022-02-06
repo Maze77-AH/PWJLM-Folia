@@ -58,6 +58,10 @@ public class WorldGroup {
         return null;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean getUseServer(boolean forJoin) {
         return forJoin ? getBoolean("join.server.use") : getBoolean("leave.server.use");
     }
