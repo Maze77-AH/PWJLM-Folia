@@ -25,8 +25,7 @@ public class LoginListener implements Listener {
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseAuthme(true)) {
             String message = group.getAuthmeMessage(true);
-            message = message.replace("{PLAYER}", player.getName()); // Add player name
-            MessageSenderUtil.sendMessage(group.getWorlds(), message, PluginUtil.usePapi(plugin));
+            MessageSenderUtil.sendMessage(group.getWorlds(), message, player, PluginUtil.usePapi(plugin));
         }
     }
 }

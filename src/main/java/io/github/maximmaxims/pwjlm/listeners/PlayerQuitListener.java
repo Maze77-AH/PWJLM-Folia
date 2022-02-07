@@ -29,8 +29,7 @@ public class PlayerQuitListener implements Listener {
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseServer(false)) {
             String message = group.getServerMessage(false);
-            message = message.replace("{PLAYER}", player.getName()); // Add player name
-            MessageSenderUtil.sendMessage(group.getWorlds(), message, PluginUtil.usePapi(plugin));
+            MessageSenderUtil.sendMessage(group.getWorlds(), message, player, PluginUtil.usePapi(plugin));
         }
     }
 }
