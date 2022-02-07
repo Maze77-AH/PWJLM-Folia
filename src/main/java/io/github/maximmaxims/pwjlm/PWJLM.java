@@ -2,7 +2,9 @@ package io.github.maximmaxims.pwjlm;
 
 import io.github.maximmaxims.pwjlm.commands.PWJLMCommand;
 import io.github.maximmaxims.pwjlm.listeners.*;
+import io.github.maximmaxims.pwjlm.utils.ConfigUtil;
 import io.github.maximmaxims.pwjlm.utils.PluginUtil;
+import io.github.maximmaxims.pwjlm.utils.UpdateUtil;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,8 +16,13 @@ public final class PWJLM extends JavaPlugin {
         // Plugin startup logic
         registerEvents();
         registerCommands();
-        PluginUtil.update(this);
+        ConfigUtil.update(this);
         new Metrics(this, 13675);
+        new UpdateUtil(this, 99738).getVersion(version -> {
+            if (!getDescription().getVersion().equals(version)) {
+                getLogger().info("There is a new update available (" + version + ")!");
+            }
+        });
     }
 
     @Override

@@ -2,6 +2,7 @@ package io.github.maximmaxims.pwjlm.listeners;
 
 import io.github.maximmaxims.pwjlm.PWJLM;
 import io.github.maximmaxims.pwjlm.classes.WorldGroup;
+import io.github.maximmaxims.pwjlm.utils.ConfigUtil;
 import io.github.maximmaxims.pwjlm.utils.MessageSenderUtil;
 import io.github.maximmaxims.pwjlm.utils.PluginUtil;
 import org.bukkit.entity.Player;
@@ -29,7 +30,7 @@ public class PlayerQuitListener implements Listener {
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseServer(false)) {
             String message = group.getServerMessage(false);
-            MessageSenderUtil.sendMessage(group.getWorlds(), message, player, PluginUtil.usePapi(plugin));
+            MessageSenderUtil.sendMessage(group.getWorlds(), message, player, ConfigUtil.usePapi(plugin));
         }
     }
 }

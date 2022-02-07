@@ -3,6 +3,7 @@ package io.github.maximmaxims.pwjlm.listeners;
 import fr.xephi.authme.api.v3.AuthMeApi;
 import io.github.maximmaxims.pwjlm.PWJLM;
 import io.github.maximmaxims.pwjlm.classes.WorldGroup;
+import io.github.maximmaxims.pwjlm.utils.ConfigUtil;
 import io.github.maximmaxims.pwjlm.utils.MessageSenderUtil;
 import io.github.maximmaxims.pwjlm.utils.PluginUtil;
 import org.bukkit.entity.Player;
@@ -45,7 +46,7 @@ public class PlayerChangedWorldListener implements Listener {
             if (!AuthMeApi.getInstance().isAuthenticated(player)) return;
         }
         String message = group.getGroupMessage(forJoin);
-        MessageSenderUtil.sendMessage(group.getWorlds(), message, player, PluginUtil.usePapi(plugin));
+        MessageSenderUtil.sendMessage(group.getWorlds(), message, player, ConfigUtil.usePapi(plugin));
     }
 
 }

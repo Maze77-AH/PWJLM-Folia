@@ -1,7 +1,7 @@
 package io.github.maximmaxims.pwjlm.commands;
 
 import io.github.maximmaxims.pwjlm.PWJLM;
-import io.github.maximmaxims.pwjlm.utils.PluginUtil;
+import io.github.maximmaxims.pwjlm.utils.ConfigUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,7 +34,7 @@ public class PWJLMCommand implements CommandExecutor, TabCompleter {
                             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] " + "&cYou don''t have permission to use this command!"));
                             return true;
                         }
-                        PluginUtil.update(plugin);
+                        ConfigUtil.update(plugin);
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] " + "Config Reloaded Successfully!"));
                         break;
                     case "help":
