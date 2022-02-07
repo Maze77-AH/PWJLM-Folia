@@ -6,6 +6,7 @@ import io.github.maximmaxims.pwjlm.utils.ConfigUtil;
 import io.github.maximmaxims.pwjlm.utils.MessageSenderUtil;
 import io.github.maximmaxims.pwjlm.utils.PluginUtil;
 import io.github.maximmaxims.pwjlm.utils.UpdateUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,7 +26,7 @@ public class PlayerJoinListener implements Listener {
         if (player.hasPermission("pwjlm.update")) {
             new UpdateUtil(plugin, 99738).getVersion(version -> {
                 if (!plugin.getDescription().getVersion().equals(version)) {
-                    player.sendMessage("There is a new update available (" + version + ")!");
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] There is a new update available (" + version + ")!"));
                 }
             });
         }

@@ -31,17 +31,17 @@ public class PWJLMCommand implements CommandExecutor, TabCompleter {
                 switch (subcommand) {
                     case "reload":
                         if (!sender.hasPermission("pwjlm.command.reload")) {
-                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] " + "&cYou don''t have permission to use this command!"));
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] &cYou don''t have permission to use this command!"));
                             return true;
                         }
                         ConfigUtil.update(plugin);
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] " + "Config Reloaded Successfully!"));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] Config Reloaded Successfully!"));
                         break;
                     case "help":
                         sendHelpMenu(sender);
                         break;
                     default:
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] " + "&cUnknown Subcommand \"" + command + "\"!"));
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&ePWJLM&7] &cUnknown Subcommand \"" + command + "\"!"));
                 }
             }
         } else {
