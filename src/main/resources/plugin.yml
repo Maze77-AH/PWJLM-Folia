@@ -1,7 +1,7 @@
 name: 'PWJLM'
 version: '${project.version}'
 main: 'io.github.maximmaxims.pwjlm.PWJLM'
-api-version: 1.18
+api-version: 1.19
 softdepend: [ PlaceholderAPI, AuthMe ]
 author: MaximMaximS
 description: '${project.description}'
