@@ -21,8 +21,8 @@ public class LoginListener implements Listener {
     @EventHandler
     public void onLogin(@NotNull LoginEvent event) {
         Player player = event.getPlayer();
-        boolean checkVanish = plugin.getConfig().getBoolean("ignoreVanished");
-        if (checkVanish && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreVanished") && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreNoPermission") && !player.hasPermission("pwjlm.notify")) return;
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseAuthme(true)) {
             String message = group.getAuthmeMessage(true);

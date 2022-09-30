@@ -22,11 +22,10 @@ public class PlayerQuitListener implements Listener {
     public void onPlayerQuitEvent(@NotNull PlayerQuitEvent event) {
         Player player = event.getPlayer();
         if (plugin.getConfig().getBoolean("removeDefaultLeave", false)) {
-            //noinspection deprecation
             event.setQuitMessage(null);
         }
-        boolean checkVanish = plugin.getConfig().getBoolean("ignoreVanished");
-        if (checkVanish && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreVanished") && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreNoPermission") && !player.hasPermission("pwjlm.notify")) return;
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseServer(false)) {
             String message = group.getServerMessage(false);

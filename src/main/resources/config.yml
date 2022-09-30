@@ -2,6 +2,8 @@
 parsePlaceholders: false
 # Whether to not send messages when vanished player joins/leaves
 ignoreVanished: true
+# Whether to not send messages when player doesn't have permission pwjlm.notify
+ignoreNoPermission: false
 # Whether to remove the vanilla join message
 removeDefaultJoin: true
 # Whether to remove the vanilla leave message

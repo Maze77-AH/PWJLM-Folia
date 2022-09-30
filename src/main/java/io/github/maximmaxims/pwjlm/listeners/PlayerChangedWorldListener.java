@@ -22,8 +22,8 @@ public class PlayerChangedWorldListener implements Listener {
     @EventHandler
     public void onPlayerChangedWorldEvent(@NotNull PlayerChangedWorldEvent event) {
         Player player = event.getPlayer();
-        boolean checkVanish = plugin.getConfig().getBoolean("ignoreVanished");
-        if (checkVanish && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreVanished") && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreNoPermission") && !player.hasPermission("pwjlm.notify")) return;
         WorldGroup from = WorldGroup.getInstance(plugin, event.getFrom());
         WorldGroup to = WorldGroup.getInstance(plugin, player.getWorld());
         boolean fromIsNull = from == null;

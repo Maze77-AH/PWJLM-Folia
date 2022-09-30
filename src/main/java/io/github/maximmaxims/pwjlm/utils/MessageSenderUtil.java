@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class MessageSenderUtil {
-    public static void sendMessage(@NotNull List<World> worlds, @NotNull String message, Player player, boolean usePapi) {
+    public static void sendMessage(@NotNull List<World> worlds, @NotNull String message, @NotNull Player player, boolean usePapi) {
         message = message.replace("{PLAYER}", player.getName()); // Add player name
         for (World w : worlds) {
             for (Player p : w.getPlayers()) {

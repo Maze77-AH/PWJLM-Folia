@@ -31,11 +31,10 @@ public class PlayerJoinListener implements Listener {
             });
         }
         if (plugin.getConfig().getBoolean("removeDefaultJoin", false)) {
-            //noinspection deprecation
             event.setJoinMessage(null);
         }
-        boolean checkVanish = plugin.getConfig().getBoolean("ignoreVanished");
-        if (checkVanish && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreVanished") && PluginUtil.isVanished(player)) return;
+        if (plugin.getConfig().getBoolean("ignoreNoPermission") && !player.hasPermission("pwjlm.notify")) return;
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseServer(true)) {
             String message = group.getServerMessage(true);
