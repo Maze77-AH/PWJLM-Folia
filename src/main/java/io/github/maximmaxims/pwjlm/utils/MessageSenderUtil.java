@@ -12,6 +12,9 @@ import java.util.Set;
 public class MessageSenderUtil {
     public static void sendMessage(@NotNull Set<World> worlds, @NotNull String message, @NotNull Player player, boolean usePapi, boolean isJoin) {
         message = message.replace("{PLAYER}", player.getName()); // Add player name
+        if (usePapi) {
+            message = PlaceholderAPI.setPlaceholders(player, message);
+        }
         Set<Player> players = new HashSet<>();
         for (World w : worlds) {
             players.addAll(w.getPlayers());
@@ -20,9 +23,6 @@ public class MessageSenderUtil {
             players.add(player);
         }
         for (Player p : players) {
-            if (usePapi) {
-                message = PlaceholderAPI.setPlaceholders(p, message);
-            }
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
         }
     }
