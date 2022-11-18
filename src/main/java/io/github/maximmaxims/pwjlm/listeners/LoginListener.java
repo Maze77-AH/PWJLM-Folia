@@ -11,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
+
 public class LoginListener implements Listener {
     private final PWJLM plugin;
 
@@ -26,7 +28,7 @@ public class LoginListener implements Listener {
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseAuthme(true)) {
             String message = group.getAuthmeMessage(true);
-            MessageSenderUtil.sendMessage(group.getWorlds(), message, player, ConfigUtil.usePapi(plugin));
+            MessageSenderUtil.sendMessage(new HashSet<>(group.getWorlds()), message, player, ConfigUtil.usePapi(plugin), true);
         }
     }
 }

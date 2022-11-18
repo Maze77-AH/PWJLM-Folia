@@ -12,7 +12,7 @@ commands:
     usage: /<command> [reload|help]
 permissions:
   pwjlm.update:
-    description: Recive update notification
+    description: Receive update notification
     default: op
   pwjlm.command:
     description: Default command usage permission

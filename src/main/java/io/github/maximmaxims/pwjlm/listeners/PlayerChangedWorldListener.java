@@ -12,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
+
 public class PlayerChangedWorldListener implements Listener {
     private final PWJLM plugin;
 
@@ -46,7 +48,7 @@ public class PlayerChangedWorldListener implements Listener {
             if (!AuthMeApi.getInstance().isAuthenticated(player)) return;
         }
         String message = group.getGroupMessage(forJoin);
-        MessageSenderUtil.sendMessage(group.getWorlds(), message, player, ConfigUtil.usePapi(plugin));
+        MessageSenderUtil.sendMessage(new HashSet<>(group.getWorlds()), message, player, ConfigUtil.usePapi(plugin), forJoin);
     }
 
 }

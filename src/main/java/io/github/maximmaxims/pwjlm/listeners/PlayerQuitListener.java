@@ -11,6 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
+
 public class PlayerQuitListener implements Listener {
     private final PWJLM plugin;
 
@@ -29,7 +31,7 @@ public class PlayerQuitListener implements Listener {
         WorldGroup group = WorldGroup.getInstance(plugin, player.getWorld());
         if (group != null && group.getUseServer(false)) {
             String message = group.getServerMessage(false);
-            MessageSenderUtil.sendMessage(group.getWorlds(), message, player, ConfigUtil.usePapi(plugin));
+            MessageSenderUtil.sendMessage(new HashSet<>(group.getWorlds()), message, player, ConfigUtil.usePapi(plugin), true);
         }
     }
 }

@@ -6,15 +6,24 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MessageSenderUtil {
-    public static void sendMessage(@NotNull List<World> worlds, @NotNull String message, @NotNull Player player, boolean usePapi) {
+    public static void sendMessage(@NotNull Set<World> worlds, @NotNull String message, @NotNull Player player, boolean usePapi, boolean isJoin) {
         message = message.replace("{PLAYER}", player.getName()); // Add player name
+        Set<Player> players = new HashSet<>();
         for (World w : worlds) {
-            for (Player p : w.getPlayers()) {
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', usePapi ? PlaceholderAPI.setPlaceholders(player, message) : message));
+            players.addAll(w.getPlayers());
+        }
+        if (isJoin) {
+            players.add(player);
+        }
+        for (Player p : players) {
+            if (usePapi) {
+                message = PlaceholderAPI.setPlaceholders(p, message);
             }
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
         }
     }
 
