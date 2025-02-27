@@ -1,6 +1,7 @@
 name: 'PWJLM'
 version: '${project.version}'
 main: 'io.github.maximmaxims.pwjlm.PWJLM'
+folia-supported: true
 api-version: 1.19
 softdepend: [ PlaceholderAPI, AuthMe ]
 author: MaximMaximS

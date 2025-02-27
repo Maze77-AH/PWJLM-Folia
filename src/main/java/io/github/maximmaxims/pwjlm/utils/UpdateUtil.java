@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
+import org.bukkit.Bukkit;
 
 public class UpdateUtil {
 
@@ -19,15 +20,18 @@ public class UpdateUtil {
     }
 
     public void getVersion(final Consumer<String> consumer) {
-        plugin.getServer().getScheduler().runTaskAsynchronously(this.plugin, () -> {
-            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream(); Scanner scanner = new Scanner(inputStream)) {
+        Bukkit.getAsyncScheduler().runNow(plugin, scheduledTask -> {
+            try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream();
+                 Scanner scanner = new Scanner(inputStream)) {
+    
                 if (scanner.hasNext()) {
                     consumer.accept(scanner.next());
                 }
+    
             } catch (IOException exception) {
                 plugin.getLogger().warning("Unable to check for updates: " + exception.getMessage());
             }
         });
-    }
+    }    
 }
  
